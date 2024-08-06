@@ -1,0 +1,67 @@
+<!-- result.html  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Result</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0px;
+            padding: 0px;
+            box-sizing: border-box;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .container{
+            margin-top: 50px;
+            width: 400px;
+            height: 300px;
+            border: 1px solid gray;
+            border-radius: 4px;
+            box-shadow: 2px 2px 4px gray;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        h1{
+            color: darkblue;
+            margin-bottom: 5px;
+            border-bottom: 1px solid gray;
+        }
+        .temperature, .condition{
+            font-size: 16px;
+            color: rgb(102, 102, 102);
+            font-weight: bold;
+        }
+        span{
+            color: black;
+            font-size: 24px;
+        }
+        .city-span{
+            font-size: 28px;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Result</h1>
+    {% if data %}
+        <h2>Weather in <span class="city-span">{{ city.title() }}</span></h2>
+        <p class="temperature">Temperature: <span>{{ data.temperature }}</span></p>
+        <p class="condition">Condition: <span>{{ data.condition }}</span></p>
+    {% else %}
+        <h2>City not found: {{ city }}</h2>
+    {% endif %}
+    <a href="/">Go Back</a>
+
+    </div>
+    
+</body>
+</html>
