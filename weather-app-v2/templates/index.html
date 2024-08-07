@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        .container{
+            background-color: lightblue;
+            box-sizing: border-box;
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, Helvetica, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .weather-container{
+            width: 460px;
+            margin-top: 50px;
+            margin-bottom: 50px;
+            padding: 30px 30px 50px 30px;
+            border: 1px solid rgb(110, 108, 108);
+            border-radius: 5px;
+            box-shadow: 2px 2px 5px gray;
+            background-color: aquamarine;
+        }
+        .label{
+            font-size: 18px;
+            color: rgb(71, 70, 70);
+        }
+        .input{
+            padding: 6px;
+            color: rgb(71, 70, 70);
+            font-size: 16px;
+            border-radius: 2px;
+            border: 1px solid gray;
+            box-shadow: inset 2px 2px 2px gray;
+        }
+        .button{
+            padding: 8px;
+            background-color: darkgreen;
+            font-size: 15px;
+            color: white;
+            border-radius: 4px;
+            border: none;
+            transition: opacity 0.2s;
+            cursor: pointer;
+        }
+        .button:hover{
+            opacity: 0.7;
+        }
+        .button:active{
+            opacity: 0.5;
+        }
+        .title-label{
+            font-size: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="weather-container">
+        <div class="title-label">Weather App</div>
+        <form action="/" method="post">
+            <label class="label" for="city">Enter City Name:</label>
+            <input class="input" type="text" id="city" name="city" required>
+            <button class="button" type="submit">Get Weather</button>
+        </form>
+    </div>
+    
+</body>
+</html>
