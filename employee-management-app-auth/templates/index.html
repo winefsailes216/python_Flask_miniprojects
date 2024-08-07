@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Management</title>
+</head>
+<body>
+    <h1>Employee Management System</h1>
+    
+    <!-- Logout form -->
+    <form action="{{ url_for('logout') }}" method="POST" style="display:inline;">
+        <button type="submit">Logout</button>
+    </form>
+    
+    <h2>Add New Employee</h2>
+    <form action="{{ url_for('create_employee') }}" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <label for="position">Position:</label>
+        <input type="text" id="position" name="position" required>
+        <label for="salary">Salary:</label>
+        <input type="number" id="salary" name="salary" required>
+        <button type="submit">Add Employee</button>
+    </form>
+
+    <h2>Employee List</h2>
+    <ul>
+        {% for employee in employees.values() %}
+            <li>
+                {{ employee.name }} - {{ employee.position }} - ${{ employee.salary }}
+                <a href="{{ url_for('edit_employee', employee_id=employee.id) }}">Edit</a>
+                <form action="{{ url_for('delete_employee', employee_id=employee.id) }}" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
