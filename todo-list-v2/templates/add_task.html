@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Task</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .todo-form{
+            margin-top: 50px;
+            width: 400px;
+            height: 1fr;
+            border: 1px solid gray;
+            border-radius: 4px;
+            box-shadow: 2px 2px 2px lightgray;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+            background-color: aquamarine;
+            padding-bottom: 40px;
+        }
+        h1{
+            color: rgb(17, 17, 134);
+        }
+        .add-button{
+            cursor: pointer;
+            margin-top: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: darkgreen;
+            padding: 6px 5px;
+            border-radius: 4px;
+            border: 1px solid gray;
+            font-size: 14px;
+            transition: opacity 0.2s;
+        }
+        .link:hover,.add-button:hover,.delete-button:hover{
+            opacity: 0.6;
+        }
+        .link:active,.add-button:active,.delete-button:active{
+            opacity: 0.3;
+            border: none;
+        }
+        .label{
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .input{
+            padding: 5px;
+            font-size: 16px;
+            color: rgb(56, 55, 55);
+            border-radius: 4px;
+            border: 1px solid gray;
+        }
+        .link{
+            text-decoration: none;
+            border: 1px solid gray;
+            border-radius: 8px;
+            padding: 5px;
+            width: 150px;
+            background-color: rgb(78, 74, 74);;
+            color: white;
+            transition: opacity 0.2s;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="todo-form">
+        <h1>Add New Task</h1>
+        <!-- Form to add a new task -->
+        <form action="{{ url_for('add_task') }}" method="post">
+            <label class="label" for="task">Task:</label>
+            <input class="input" type="text" id="task" name="task" required>
+            <button class="add-button" type="submit">Add Task</button>
+        </form>
+        <!-- Link to return to the To-Do List -->
+        <a class="link" href="{{ url_for('index') }}">Back to To-Do List</a>
+    </div>
+    
+</body>
+</html>

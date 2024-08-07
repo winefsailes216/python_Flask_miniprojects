@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <style>
+        .container{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .todo-form{
+            margin-top: 50px;
+            width: 400px;
+            height: 1fr;
+            border: 1px solid gray;
+            border-radius: 4px;
+            box-shadow: 2px 2px 2px lightgray;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            align-items: center;
+            justify-content: space-between;
+            background-color: aquamarine;
+            padding-bottom: 40px;
+        }
+        h1{
+            color: rgb(17, 17, 134);
+        }
+        .link{
+            text-decoration: none;
+            border: 1px solid gray;
+            border-radius: 8px;
+            padding: 5px;
+            width: 180px;
+            background-color: blue;
+            color: white;
+            transition: opacity 0.3s;
+            margin-bottom: 20px;
+        }
+        .tasklist{
+            text-align: left;
+            display: inline-block;
+        }
+        .task-details{
+            font-size: 15px;
+            color: black;
+            margin-top: 10px;
+            margin-bottom: 4px;
+            margin-left: 15px;
+            margin-right: 20px;
+        }
+        .forms-container{
+            margin-bottom: 18px;
+            margin-left: 20px;
+        }
+        .edit-button{
+            margin-top: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: orange;
+            padding: 3px 5px;
+            border-radius: 2px;
+            border: 1px solid gray;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+        .delete-button{
+            cursor: pointer;
+            margin-top: 5px;
+            text-decoration: none;
+            color: white;
+            background-color: darkred;
+            padding: 3px 5px;
+            border-radius: 2px;
+            border: 1px solid gray;
+            font-size: 14px;
+            transition: opacity 0.3s 0.3s;
+        }
+        .link:hover,.edit-button:hover,.delete-button:hover{
+            opacity: 0.6;
+        }
+        .link:active,.edit-button:active,.delete-button:active{
+            opacity: 0.3;
+            border: none;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="todo-form">
+        <h1>To-Do List</h1>
+        <!-- Link to add a new task -->
+        <a class="link" href="{{ url_for('add_task') }}">Add New Task</a>
+        <div class="tasklist">
+            <!-- Loop through tasks and display each one -->
+            {% for task in tasks %}
+            <div>
+                <div class="task-details">
+                    {{ loop.index }}. {{ task }}
+                </div>
+                <div class="forms-container">
+                    <!-- Link to edit the task -->
+                    <a class="edit-button" href="{{ url_for('edit_task', task_id=loop.index0) }}">Edit</a>
+                    <!-- Form to delete the task -->
+                    <form action="{{ url_for('delete_task', task_id=loop.index0) }}" method="post" style="display:inline;">
+                        <button class="delete-button" type="submit">Delete</button>
+                    </form>
+                </div>
+                
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    
+</body>
+</html>
